@@ -5,8 +5,9 @@ import Navbar from "react-bootstrap/Navbar";
 
 function NavigationBar() {
   const navigation = [
-    { title: "Home", link: "Home" },
-    { title: "Product", link: "Product" },
+    { title: "Home", link: "home" },
+    { title: "Product", link: "product" },
+    { title: "Checkout", link: "checkout" },
   ];
 
   return (
