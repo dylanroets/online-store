@@ -1,17 +1,12 @@
 import './Checkout.css';
 
-function Checkout() {
-  // Dummy data for the shopping cart
-  const cartItems = [
-    { id: 1, name: "Item 1", price: 10.99 },
-    { id: 2, name: "Item 2", price: 15.99 },
-    { id: 3, name: "Item 3", price: 20.49 },
-  ];
+function Checkout({ cartItems }) {
 
   //Checkout adding totals
   //Eventually needs to be a POST to DB
   const handleCheckout = ()=> {
-    const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+    const totalPrice = cartItems
+      .reduce((total, item) => total + item.price, 0).toFixed(2);
     alert(`Total amount to be paid: $${totalPrice}`);
   }
 
@@ -29,7 +24,7 @@ function Checkout() {
       <div className="cart-summary">
         <span>Total: </span>
         <span>
-          ${cartItems.reduce((total, item) => total + item.price, 0)}
+          ${cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)}
         </span>
       </div>
       <button className="checkout-button" onClick={handleCheckout}>Checkout</button>
