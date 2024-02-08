@@ -4,6 +4,8 @@ import Checkout from "./components/Checkout";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
+import Home from "./components/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 
@@ -13,15 +15,15 @@ function App() {
     setCartItems([...cartItems, product]);
   };
 
+function App() {
 
   return (
     <div>
       <NavigationBar />
-      <h1>Testing</h1>
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
         <Route path="/product" element={<Product addToCart={addToCart}/>} />
         <Route path="/checkout" element={<Checkout cartItems={cartItems}/>} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </div>
   );
