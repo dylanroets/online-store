@@ -4,6 +4,7 @@ function NavigationBar() {
   const navigation = [
     { title: "Home", link: "home" },
     { title: "Product", link: "product" },
+    { title: "Checkout", link: "checkout" },
   ];
   return (
     <nav>
