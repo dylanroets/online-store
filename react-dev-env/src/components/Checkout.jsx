@@ -16,8 +16,15 @@ function Checkout({ cartItems }) {
       <ul>
         {cartItems.map((item) => (
           <li key={item.id}>
-            <span className="item-name">{item.name}</span>
-            <span className="item-price">${item.price}</span>
+            <span>{item.brand}</span>
+            <br></br>
+            <span className="item-name">{item.title}</span>
+            <br></br>
+            <span className="item-price">Aisle: {item.aisle}</span>
+            <br></br>
+            <span>Health Rating: {item.spoonacularScore} </span>
+            <br></br>
+            <br></br>
           </li>
         ))}
       </ul>

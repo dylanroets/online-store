@@ -12,7 +12,7 @@ function Product({ addToCart }) {
   return (
     <>
       <h1>Product Page! :D</h1>
-        <button
+        {/* <button
           onClick={() => handleAddToCart({ id: 1, name: "Donut", price: 10.99 })}
         >
           Add Donut to Cart
@@ -34,7 +34,7 @@ function Product({ addToCart }) {
                 <li key={index}>{item.name}</li>
               ))}
             </ul>
-      </div>
+      </div> */}
       
     </>
   );
