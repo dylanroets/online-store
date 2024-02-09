@@ -30,6 +30,8 @@ li {
 
 /* --- CATEGORY RESULTS --- */
 
+/* --- CHECKOUT --- */
+
 /* --- FOOTER --- */
 footer {
   background-color: #1d1d1d;
@@ -38,7 +40,7 @@ footer {
 }
 
 .footer-text {
-  font-size: 20px;
+  font-size: 18px;
   color: #ffffff;
 }
 

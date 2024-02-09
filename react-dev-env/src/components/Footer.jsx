@@ -7,11 +7,13 @@ function Footer() {
       <footer class="pt-5">
         <Row className="pb-4">
           <Col sm={6}>
-            <img class="footer-logo" src="../images/restaurant.png" />
+            <img class="footer-logo" src="../images/food.png" />
           </Col>
 
           <Col sm={6}>
-            <p class="footer-text">TESTING FOOTER</p>
+            <p class="footer-text">About Us</p>
+            <p class="footer-text">Store Hours</p>
+            <p class="footer-text">Customer Servive</p>
           </Col>
         </Row>
         <hr class="footer-hr" />
