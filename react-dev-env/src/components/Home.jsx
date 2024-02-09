@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
-
 function Home({ addToCart }) {
 
   //Adding items to the cart from the search results
@@ -28,7 +27,7 @@ function Home({ addToCart }) {
     const apiKey = import.meta.env.VITE_MY_SPOONACULAR_API_KEY;
     //API URL
     const apiUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&query=${searchQuery}&number=3&addProductInformation=True`;
-    
+
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
@@ -42,6 +41,7 @@ function Home({ addToCart }) {
   return (
     <div>
       <main>
+        {/* Header Image Cover */}
         <div class="container-fluid d-flex align-items-center justify-content-evenly text-end home-head-image">
           <div class="">
             <h1 class="home-head-text">Fresh and Organic</h1>
@@ -50,10 +50,79 @@ function Home({ addToCart }) {
         </div>
 
         <Container>
+          {/* Category for the Products */}
+          <Row className="pt-5">
+            <p class="text-primary">Shop by</p>
+            <h3 class="pb-2">Categories</h3>
+
+            <Col sm={3}>
+              <Card border="light" style={{ width: "10rem" }}>
+                <Card.Img variant="top" src="../images/drinks.png" />
+                <Card.Body>
+                  <Card.Title className="pb-2 text-center">
+                    Beverages
+                  </Card.Title>
+
+                  <div className="d-grid gap-2">
+                    <Button className="" variant="success" size="md">
+                      Shop Now
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+
+            <Col sm={3}>
+              <Card border="light" style={{ width: "10rem" }}>
+                <Card.Img variant="top" src="../images/healthy-food.png" />
+                <Card.Body>
+                  <Card.Title className="pb-2 text-center">Produce</Card.Title>
+
+                  <div className="d-grid gap-2">
+                    <Button className="" variant="success" size="md">
+                      Shop Now
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+
+            <Col sm={3}>
+              <Card border="light" style={{ width: "10rem" }}>
+                <Card.Img variant="top" src="../images/meat.png" />
+                <Card.Body>
+                  <Card.Title className="pb-2 text-center">Meat</Card.Title>
+
+                  <div className="d-grid gap-2">
+                    <Button className="" variant="success" size="md">
+                      Shop Now
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+
+            <Col sm={3}>
+              <Card border="light" style={{ width: "10rem" }}>
+                <Card.Img variant="top" src="../images/snack.png" />
+                <Card.Body>
+                  <Card.Title className="pb-2 text-center">Snacks</Card.Title>
+
+                  <div className="d-grid gap-2">
+                    <Button className="" variant="success" size="md">
+                      Shop Now
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+
+          {/* Search Bar using the API */}
           <Row className="px-4 my-5">
             <Col sm>
               <h1 class="pb-3 text-center">Search Entire Store for Product</h1>
-              {/* Search Bar using the API */}
+
               <Form inline onSubmit={handleSearchSubmit}>
                 <Row>
                   <Col sm={10}>
@@ -72,6 +141,7 @@ function Home({ addToCart }) {
               </Form>
             </Col>
           </Row>
+
           {/* Search Results Mapping */}
           <Row className="px-4 my-5">
             {searchResults &&
@@ -100,6 +170,7 @@ function Home({ addToCart }) {
               ))}
           </Row>
 
+          {/* Featured Products */}
           <Row className="px-4 my-5">
             <h1 class="pb-4">This Week's Sale</h1>
 
@@ -162,84 +233,6 @@ function Home({ addToCart }) {
                   <div className="d-grid gap-2">
                     <Button className="" variant="success" size="md">
                       Add to Cart
-                    </Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-
-          <Row className="px-4 my-5">
-            <h1 class="pb-4">Products</h1>
-
-            <Col sm={3}>
-              <Card style={{ width: "12rem" }}>
-                <Card.Img
-                  variant="top"
-                  src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?q=80&w=2139&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                />
-                <Card.Body>
-                  <Card.Title className="pb-2 text-center">Dairy</Card.Title>
-
-                  <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
-                      Shop Now
-                    </Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col sm={3}>
-              <Card style={{ width: "12rem" }}>
-                <Card.Img
-                  variant="top"
-                  src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?q=80&w=2139&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                />
-                <Card.Body>
-                  <Card.Title className="pb-2 text-center">Meat</Card.Title>
-
-                  <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
-                      Shop Now
-                    </Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col sm={3}>
-              <Card style={{ width: "12rem" }}>
-                <Card.Img
-                  variant="top"
-                  src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?q=80&w=2139&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                />
-                <Card.Body>
-                  <Card.Title className="pb-2 text-center">
-                    Beverages
-                  </Card.Title>
-
-                  <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
-                      Shop Now
-                    </Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-
-            <Col sm={3}>
-              <Card style={{ width: "12rem" }}>
-                <Card.Img
-                  variant="top"
-                  src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?q=80&w=2139&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                />
-                <Card.Body>
-                  <Card.Title className="pb-2 text-center">Meat</Card.Title>
-
-                  <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
-                      Shop Now
                     </Button>
                   </div>
                 </Card.Body>

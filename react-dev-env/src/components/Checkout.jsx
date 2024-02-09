@@ -1,4 +1,9 @@
-import "./Checkout.css";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import "../App.css";
 
 function Checkout({ cartItems }) {
   //Checkout adding totals
@@ -11,35 +16,80 @@ function Checkout({ cartItems }) {
   };
 
   return (
-    <div className="shopping-cart">
-      <h2>Shopping Cart</h2>
-      <ul>
-        {cartItems.map((item) => (
-          <li key={item.id}>
-            <span>{item.brand}</span>
-            <br></br>
-            <span className="item-name">{item.title}</span>
-            <br></br>
-            <span className="item-price">Aisle: {item.aisle}</span>
-            <br></br>
-            <span>Health Rating: {item.spoonacularScore} </span>
-            <br></br>
-            <br></br>
-          </li>
-        ))}
-      </ul>
+    <>
+      <main>
+        <Container className="pb-5" fluid>
+          <Row className="pb-5 pt-5 px-3 my-3 justify-content-center">
+            <Col sm={8}>
+              <h1>Shopping Cart</h1>
+              <hr />
+              <ul>
+                {cartItems.map((item) => (
+                  <li key={item.id}>
+                    <span>{item.brand}</span>
+                    <br></br>
+                    <span className="item-name">{item.title}</span>
+                    <br></br>
+                    <span className="item-price">Aisle: {item.aisle}</span>
+                    <br></br>
+                    <span>Health Rating: {item.spoonacularScore} </span>
+                    <br></br>
+                    <br></br>
+                  </li>
+                ))}
+              </ul>
+            </Col>
 
-      <div className="cart-summary">
-        <span>Total: </span>
-        <span>
-          ${cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)}
-        </span>
-      </div>
+            <Col sm={4}>
+              <Card style={{ width: "23rem" }}>
+                <Card.Body className="pt-3">
+                  <Card.Text className="">
+                    <span>Subtotal: </span>
+                  </Card.Text>
+                  <hr />
+                  <Card.Text className="">
+                    <span>Estimated Tax: </span>
+                  </Card.Text>
+                  <hr />
+                  <Card.Text className="">
+                    <span class="">Estimated Total: </span>
+                    <span>
+                      $
+                      {cartItems
+                        .reduce((total, item) => total + item.price, 0)
+                        .toFixed(2)}
+                    </span>
+                  </Card.Text>
+                  <br />
 
-      <button className="checkout-button" onClick={handleCheckout}>
-        Checkout
-      </button>
-    </div>
+                  <Card.Text className="text-center">
+                    *These prices are for online orders only and do not apply to
+                    in-store purchases.
+                  </Card.Text>
+
+                  <div className="pt-2 d-grid gap-2">
+                    <Button
+                      variant="outline-secondary"
+                      size="lg"
+                      onClick={handleCheckout}
+                    >
+                      Checkout
+                    </Button>
+                    <Button
+                      variant="outline-primary"
+                      size="lg"
+                      onClick={handleCheckout}
+                    >
+                      Continue Shopping
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+      </main>
+    </>
   );
 }
 

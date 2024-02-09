@@ -16,7 +16,7 @@ function NavigationBar() {
       <Navbar bg="dark" data-bs-theme="dark" className="justify-content-center">
         <Container className="">
           <Navbar.Brand href="">
-            <img class="nav-store-logo" src="../images/restaurant.png" />
+            <img class="nav-store-logo" src="../images/food.png" />
           </Navbar.Brand>
           <Nav className="me-auto">
             {navigation.map((navItem, index) => (
