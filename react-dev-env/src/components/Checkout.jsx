@@ -25,10 +25,16 @@ function Checkout({ cartItems }) {
               <hr />
               <ul>
                 {cartItems.map((item) => (
-                  <li class="" key={item.id}>
-                    <span className="item-name">{item.name}</span>
-                    <span className="item-price">${item.price}</span>
-                    <hr />
+                  <li key={item.id}>
+                    <span>{item.brand}</span>
+                    <br></br>
+                    <span className="item-name">{item.title}</span>
+                    <br></br>
+                    <span className="item-price">Aisle: {item.aisle}</span>
+                    <br></br>
+                    <span>Health Rating: {item.spoonacularScore} </span>
+                    <br></br>
+                    <br></br>
                   </li>
                 ))}
               </ul>

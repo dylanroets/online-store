@@ -6,7 +6,18 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
-function Home() {
+function Home({ addToCart }) {
+
+  //Adding items to the cart from the search results
+    const [addedItems, setAddedItems] = useState([]);
+
+    const handleAddToCart = (product) => {
+      addToCart(product);
+      console.log("This is the product added to checkout", product);
+      setAddedItems([...addedItems, product]);
+    };
+
+  //Search Query GET from the API
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -15,7 +26,7 @@ function Home() {
     //API KEY
     const apiKey = import.meta.env.VITE_MY_SPOONACULAR_API_KEY;
     //API URL
-    const apiUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&query=${searchQuery}&number=3`;
+    const apiUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&query=${searchQuery}&number=3&addProductInformation=True`;
 
     try {
       const response = await fetch(apiUrl);
@@ -144,7 +155,12 @@ function Home() {
                         {product.title}
                       </Card.Title>
                       <div className="d-grid gap-2">
-                        <Button className="" variant="success" size="md">
+                        <Button
+                          className=""
+                          variant="success"
+                          size="md"
+                          onClick={() => handleAddToCart(product)} //Product being passed to Checkout Cart
+                        >
                           Add to Cart
                         </Button>
                       </div>
