@@ -4,8 +4,31 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useState } from "react";
+
 
 function Home() {
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearchSubmit = async (event) => {
+    event.preventDefault();
+    //API KEY
+    const apiKey = import.meta.env.VITE_MY_SPOONACULAR_API_KEY;
+    //API URL
+    const apiUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&query=${searchQuery}&number=3`;
+    
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      setSearchResults(data);
+      console.log("Here's the data:", data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   return (
     <div>
       <main>
@@ -20,14 +43,16 @@ function Home() {
           <Row className="px-4 my-5">
             <Col sm>
               <h1 class="pb-3 text-center">Search Entire Store for Product</h1>
-
-              <Form inline>
+              {/* Search Bar using the API */}
+              <Form inline onSubmit={handleSearchSubmit}>
                 <Row>
                   <Col sm={10}>
                     <Form.Control
                       type="text"
                       placeholder="Search"
                       className=" mr-sm-2"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
                     />
                   </Col>
                   <Col sm={2}>
@@ -36,6 +61,28 @@ function Home() {
                 </Row>
               </Form>
             </Col>
+          </Row>
+          {/* Search Results Mapping */}
+          <Row className="px-4 my-5">
+            { searchResults &&
+              searchResults.products &&
+              searchResults.products.map((product) => (
+                <Col sm={3} key={product.id}>
+                  <Card style={{ width: "12rem" }}>
+                    <Card.Img variant="top" src={product.image} />
+                    <Card.Body>
+                      <Card.Title className="pb-2 text-center">
+                        {product.title}
+                      </Card.Title>
+                      <div className="d-grid gap-2">
+                        <Button className="" variant="success" size="md">
+                          Add to Cart
+                        </Button>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
           </Row>
 
           <Row className="px-4 my-5">
