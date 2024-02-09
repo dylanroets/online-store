@@ -5,17 +5,17 @@ import Navbar from "react-bootstrap/Navbar";
 
 function NavigationBar() {
   const navigation = [
-    { title: "Home", link: "home" },
-    { title: "Product", link: "product" },
-    { title: "Checkout", link: "checkout" },
+    { title: "Home", link: "Home" },
+    { title: "Product", link: "Product" },
+    { title: "Checkout", link: "Checkout" },
   ];
 
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
-      <Container>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav>
+    <header>
+      <Navbar bg="dark" data-bs-theme="dark" className="justify-content-center">
+        <Container>
+          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Nav className="me-auto">
             {navigation.map((navItem, index) => (
               <NavigationItem
                 key={index}
@@ -24,9 +24,9 @@ function NavigationBar() {
               />
             ))}
           </Nav>
-        </Nav>
-      </Container>
-    </Navbar>
+        </Container>
+      </Navbar>
+    </header>
   );
 }
 
