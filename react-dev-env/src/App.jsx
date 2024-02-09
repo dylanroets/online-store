@@ -2,6 +2,8 @@ import NavigationBar from "./components/NavigationBar";
 import Product from "./components/Product";
 import Checkout from "./components/Checkout";
 import Home from "./components/Home";
+import Result from "./components/Result";
+import Footer from "./components/Footer";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
@@ -21,7 +23,9 @@ function App() {
         <Route path="/product" element={<Product addToCart={addToCart} />} />
         <Route path="/checkout" element={<Checkout cartItems={cartItems} />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/result" element={<Result />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

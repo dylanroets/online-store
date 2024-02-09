@@ -8,13 +8,16 @@ function NavigationBar() {
     { title: "Home", link: "Home" },
     { title: "Product", link: "Product" },
     { title: "Checkout", link: "Checkout" },
+    { title: "Result", link: "Result" },
   ];
 
   return (
     <header>
       <Navbar bg="dark" data-bs-theme="dark" className="justify-content-center">
-        <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+        <Container className="">
+          <Navbar.Brand href="">
+            <img class="nav-store-logo" src="../images/restaurant.png" />
+          </Navbar.Brand>
           <Nav className="me-auto">
             {navigation.map((navItem, index) => (
               <NavigationItem

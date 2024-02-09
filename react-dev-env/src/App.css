@@ -1,6 +1,17 @@
 /* --- NAVIGATION --- */
 li {
-  padding-right: 25px;
+  padding-left: 20px;
+}
+
+.nav-store-logo {
+  height: 60px;
+}
+
+.nav-link-style {
+  font-size: 22px;
+  padding-right: 30px;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 /* --- HOME --- */
@@ -15,10 +26,31 @@ li {
   padding-left: 560px;
 }
 
-.home-card-title {
-  color: red;
-}
+/* --- SEARCH RESULTS --- */
 
-/* --- RESULTS --- */
+/* --- CATEGORY RESULTS --- */
 
 /* --- FOOTER --- */
+footer {
+  background-color: #1d1d1d;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.footer-tm-text {
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.footer-logo {
+  height: 70px;
+}
+
+.footer-hr {
+  border-color: #ffffff;
+}
