@@ -4,14 +4,14 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function Result() {
+function CategoryResult() {
   return (
     <div>
       <main>
         <Container fluid>
           <Row className="px-4 my-5">
             <Col>
-              <h1 class="text-center">Search Results for "title"</h1>
+              <h1 class="text-center">Category Results for "title"</h1>
               <hr></hr>
             </Col>
           </Row>
@@ -144,4 +144,4 @@ function Result() {
   );
 }
 
-export default Result;
+export default CategoryResult;
