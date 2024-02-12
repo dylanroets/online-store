@@ -177,7 +177,7 @@ function Home({ addToCart }) {
                       onClick={() => handleShowModal(product)} // Show modal when button is clicked
                     />
                     <Card.Body>
-                      {/* Truncated to just two lines for the descrioption */}
+                      {/* Truncated to just two lines for the description */}
                       <Card.Title className="pb-2 text-center custom-text-truncate">
                         {product.title}
                       </Card.Title>
@@ -250,7 +250,7 @@ function Home({ addToCart }) {
 
           {/* Featured Products */}
           <Row className="pt-1 pb-5 px-4 my-5">
-            <h3 class="pb-4">This Week's Sale</h3>
+            <h3 class="pb-4">Our Weekly Sale</h3>
 
             <Col sm>
               <Card border="" style={{ width: "18rem" }}>
