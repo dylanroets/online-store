@@ -25,7 +25,7 @@ function Home({ addToCart }) {
     //API KEY
     const apiKey = import.meta.env.VITE_MY_SPOONACULAR_API_KEY;
     //API URL
-    const apiUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&query=${searchQuery}&number=3&addProductInformation=True`;
+    const apiUrl = `https://api.spoonacular.com/food/products/search?apiKey=${apiKey}&query=${searchQuery}&number=4&addProductInformation=True`;
 
     try {
       const response = await fetch(apiUrl);
@@ -161,7 +161,8 @@ function Home({ addToCart }) {
                       src={product.image}
                     />
                     <Card.Body>
-                      <Card.Title className="pb-2 text-center">
+                      {/* Truncated to just two lines for the descrioption */}
+                      <Card.Title className="pb-2 text-center custom-text-truncate">
                         {product.title}
                       </Card.Title>
 

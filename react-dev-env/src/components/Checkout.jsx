@@ -58,6 +58,7 @@ function Checkout({ cartItems }) {
 
                       {/*Item Price */}
                       <div class="col-2 mt-4">
+                        {/* For items without a price from the API random number generate a price */}
                         <span class="fw-medium text-danger">
                           $
                           {item.price === 0
@@ -92,13 +93,14 @@ function Checkout({ cartItems }) {
                   </Card.Text>
                   <hr />
                   <Card.Text className="">
+                    {/* Calculating just MN state tax */}
                     <span>
                       Estimated Tax: ${(totalPrice * 0.08375).toFixed(2)}
                     </span>
                     <span></span>
                   </Card.Text>
                   <hr />
-
+                  {/* Estimated total is total price plus tax */}
                   <Card.Text className="">
                     <span class="ck-cart-text">Estimated Total: </span>
                     <span class="ck-cart-text">
@@ -134,7 +136,8 @@ function Checkout({ cartItems }) {
                   </div>
                 </Card.Body>
               </Card>
-
+              
+              {/* Promo code entry form */}
               <div class="align-items-center pt-5">
                 <p>
                   Promo Code{" "}
