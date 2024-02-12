@@ -4,16 +4,30 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Modal } from "react-bootstrap";
 import { useState } from "react";
 
 function Home({ addToCart }) {
   //Adding items to the cart from the search results
   const [addedItems, setAddedItems] = useState([]);
-
+ 
   const handleAddToCart = (product) => {
     addToCart(product);
     console.log("This is the product added to checkout", product);
     setAddedItems([...addedItems, product]);
+  };
+
+  // Modal and further item discription
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  // opening modal
+  const handleShowModal = (product) => {
+    setSelectedProduct(product);
+    setShowModal(true);
+  };
+  // closing modal
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   //Search Query GET from the API
@@ -159,6 +173,7 @@ function Home({ addToCart }) {
                       className="home-card-image"
                       variant="top"
                       src={product.image}
+                      onClick={() => handleShowModal(product)} // Show modal when button is clicked
                     />
                     <Card.Body>
                       {/* Truncated to just two lines for the descrioption */}
@@ -180,7 +195,57 @@ function Home({ addToCart }) {
                 </Col>
               ))}
           </Row>
+          {/* Modal for the item desciption once clicked image */}
+          <Modal show={showModal} onHide={handleCloseModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {selectedProduct && selectedProduct.title}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {selectedProduct && (
+                <div>
+                  <img
+                    src={selectedProduct.image}
+                    alt={selectedProduct.title}
+                  />
+                  <p>Description: {selectedProduct.description}</p>
+                  {/* Add more details or information here */}
+                </div>
+              )}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseModal}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          
           <hr />
+          <Modal show={showModal} onHide={handleCloseModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {selectedProduct && selectedProduct.title}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {selectedProduct && (
+                <>
+                  <img
+                    src={selectedProduct.image}
+                    alt={selectedProduct.title}
+                  />
+                  <p>Description: {selectedProduct.description}</p>
+                  {/* Add more details or information here */}
+                </>
+              )}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleCloseModal}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
 
           {/* Featured Products */}
           <Row className="pt-1 pb-5 px-4 my-5">
