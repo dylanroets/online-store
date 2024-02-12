@@ -5,14 +5,28 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../App.css";
+import { useState } from "react";
 
 function Checkout({ cartItems }) {
-  //Checkout adding totals
-  //Eventually needs to be a POST to DB
-  const handleCheckout = () => {
+  // Function to calculate total price
+  const calculateTotalPrice = () => {
     const totalPrice = cartItems
-      .reduce((total, item) => total + item.price, 0)
+      .reduce((total, item) => {
+        const price =
+          item.price === 0 ? Math.random() * (10 - 5) + 5 : item.price;
+        return total + price;
+      }, 0)
       .toFixed(2);
+    return totalPrice;
+  };
+
+  // State to store total price
+  const [totalPrice, setTotalPrice] = useState(calculateTotalPrice());
+
+  // Function to handle checkout
+  const handleCheckout = () => {
+    const totalPrice = calculateTotalPrice();
+    setTotalPrice(totalPrice);
     alert(`Total amount to be paid: $${totalPrice}`);
   };
 
@@ -45,7 +59,10 @@ function Checkout({ cartItems }) {
                       {/*Item Price */}
                       <div class="col-2 mt-4">
                         <span class="fw-medium text-danger">
-                          ${item.price}{" "}
+                          $
+                          {item.price === 0
+                            ? (Math.random() * (5 - 1) + 5).toFixed(2)
+                            : item.price.toFixed(2)}
                         </span>
                       </div>
 
@@ -70,13 +87,15 @@ function Checkout({ cartItems }) {
               <Card style={{ width: "23rem" }}>
                 <Card.Body className="pt-3">
                   <Card.Text>
-                    <span>Subtotal: </span>
-                    <span>$</span>
+                    <span>Subtotal: ${totalPrice}</span>
+                    <span></span>
                   </Card.Text>
                   <hr />
                   <Card.Text className="">
-                    <span>Estimated Tax: </span>
-                    <span>$ </span>
+                    <span>
+                      Estimated Tax: ${(totalPrice * 0.08375).toFixed(2)}
+                    </span>
+                    <span></span>
                   </Card.Text>
                   <hr />
 
@@ -84,9 +103,10 @@ function Checkout({ cartItems }) {
                     <span class="ck-cart-text">Estimated Total: </span>
                     <span class="ck-cart-text">
                       $
-                      {cartItems
-                        .reduce((total, item) => total + item.price, 0)
-                        .toFixed(2)}
+                      {(
+                        parseFloat(totalPrice) +
+                        parseFloat(totalPrice) * 0.08375
+                      ).toFixed(2)}
                     </span>
                   </Card.Text>
 
