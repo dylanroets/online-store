@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -17,7 +18,7 @@ function Home({ addToCart }) {
     setAddedItems([...addedItems, product]);
   };
 
-  // Modal and further item discription
+  // Modal and further item description
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   // opening modal
@@ -195,7 +196,7 @@ function Home({ addToCart }) {
                 </Col>
               ))}
           </Row>
-          {/* Modal for the item desciption once clicked image */}
+          {/* Modal for the item description once clicked image */}
           <Modal show={showModal} onHide={handleCloseModal}>
             <Modal.Header closeButton>
               <Modal.Title>
