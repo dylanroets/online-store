@@ -7,15 +7,14 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
 function Home({ addToCart }) {
-
   //Adding items to the cart from the search results
-    const [addedItems, setAddedItems] = useState([]);
+  const [addedItems, setAddedItems] = useState([]);
 
-    const handleAddToCart = (product) => {
-      addToCart(product);
-      console.log("This is the product added to checkout", product);
-      setAddedItems([...addedItems, product]);
-    };
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    console.log("This is the product added to checkout", product);
+    setAddedItems([...addedItems, product]);
+  };
 
   //Search Query GET from the API
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,8 +43,13 @@ function Home({ addToCart }) {
         {/* Header Image Cover */}
         <div class="container-fluid d-flex align-items-center justify-content-evenly text-end home-head-image">
           <div class="">
-            <h1 class="home-head-text">Fresh and Organic</h1>
-            <h3 class="home-head-text">Lorem Ipsum Dolor!</h3>
+            <h1 class="home-head-text">SIMPLY DELICIOUS</h1>
+            <h4 class="home-head-text">We supply high quality products</h4>
+            <div class="pt-2 home-head-button">
+              <button class="btn btn-warning btn-lg" type="button">
+                Shop now
+              </button>
+            </div>
           </div>
         </div>
 
@@ -53,7 +57,7 @@ function Home({ addToCart }) {
           {/* Category for the Products */}
           <Row className="pt-5">
             <p class="text-primary">Shop by</p>
-            <h3 class="pb-2">Categories</h3>
+            <h3 class="pb-3">Category</h3>
 
             <Col sm={3}>
               <Card border="light" style={{ width: "10rem" }}>
@@ -64,7 +68,7 @@ function Home({ addToCart }) {
                   </Card.Title>
 
                   <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
+                    <Button className="" variant="dark" size="md">
                       Shop Now
                     </Button>
                   </div>
@@ -79,7 +83,7 @@ function Home({ addToCart }) {
                   <Card.Title className="pb-2 text-center">Produce</Card.Title>
 
                   <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
+                    <Button className="" variant="dark" size="md">
                       Shop Now
                     </Button>
                   </div>
@@ -94,7 +98,7 @@ function Home({ addToCart }) {
                   <Card.Title className="pb-2 text-center">Meat</Card.Title>
 
                   <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
+                    <Button className="" variant="dark" size="md">
                       Shop Now
                     </Button>
                   </div>
@@ -109,7 +113,7 @@ function Home({ addToCart }) {
                   <Card.Title className="pb-2 text-center">Snacks</Card.Title>
 
                   <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
+                    <Button className="" variant="dark" size="md">
                       Shop Now
                     </Button>
                   </div>
@@ -117,11 +121,11 @@ function Home({ addToCart }) {
               </Card>
             </Col>
           </Row>
-
+          <br />
           {/* Search Bar using the API */}
-          <Row className="px-4 my-5">
+          <Row className="pt-5 px-4 my-5">
             <Col sm>
-              <h1 class="pb-3 text-center">Search Entire Store for Product</h1>
+              <h3 class="pb-3">Search Entire Store for a Product</h3>
 
               <Form inline onSubmit={handleSearchSubmit}>
                 <Row>
@@ -135,7 +139,9 @@ function Home({ addToCart }) {
                     />
                   </Col>
                   <Col sm={2}>
-                    <Button type="submit">Submit</Button>
+                    <Button variant="dark" size="md" type="submit">
+                      Submit
+                    </Button>
                   </Col>
                 </Row>
               </Form>
@@ -143,21 +149,25 @@ function Home({ addToCart }) {
           </Row>
 
           {/* Search Results Mapping */}
-          <Row className="px-4 my-5">
+          <Row className="pb-5 px-4 my-5">
             {searchResults &&
               searchResults.products &&
               searchResults.products.map((product) => (
                 <Col sm={3} key={product.id}>
-                  <Card style={{ width: "12rem" }}>
-                    <Card.Img variant="top" src={product.image} />
+                  <Card style={{ width: "14rem" }}>
+                    <Card.Img
+                      className="home-card-image"
+                      variant="top"
+                      src={product.image}
+                    />
                     <Card.Body>
                       <Card.Title className="pb-2 text-center">
                         {product.title}
                       </Card.Title>
+
                       <div className="d-grid gap-2">
                         <Button
-                          className=""
-                          variant="success"
+                          variant="dark"
                           size="md"
                           onClick={() => handleAddToCart(product)} //Product being passed to Checkout Cart
                         >
@@ -169,25 +179,29 @@ function Home({ addToCart }) {
                 </Col>
               ))}
           </Row>
+          <hr />
 
           {/* Featured Products */}
-          <Row className="px-4 my-5">
-            <h1 class="pb-4">This Week's Sale</h1>
+          <Row className="pt-1 pb-5 px-4 my-5">
+            <h3 class="pb-4">This Week's Sale</h3>
 
             <Col sm>
               <Card border="" style={{ width: "18rem" }}>
                 <Card.Img
+                  className="home-card-image"
                   variant="top"
-                  src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?q=80&w=2139&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  src="../images/strawberry-sale.jpg"
                 />
                 <Card.Body>
                   <Card.Title className="text-danger text-center" as="h4">
-                    $0.79/each
+                    $5.99/each
                   </Card.Title>
-                  <Card.Text className="text-center">Hass Avocados</Card.Text>
+                  <Card.Text className="text-center">
+                    Organic Strawberries
+                  </Card.Text>
 
                   <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
+                    <Button className="" variant="dark" size="md">
                       Add to Cart
                     </Button>
                   </div>
@@ -198,8 +212,9 @@ function Home({ addToCart }) {
             <Col sm>
               <Card style={{ width: "18rem" }}>
                 <Card.Img
+                  className="home-card-image"
                   variant="top"
-                  src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?q=80&w=2139&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  src="../images/chicken-sale.jpg"
                 />
                 <Card.Body>
                   <Card.Title className="text-danger text-center" as="h4">
@@ -209,7 +224,7 @@ function Home({ addToCart }) {
                     Boneless Chicken
                   </Card.Text>
                   <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
+                    <Button className="" variant="dark" size="md">
                       Add to Cart
                     </Button>
                   </div>
@@ -220,8 +235,9 @@ function Home({ addToCart }) {
             <Col sm>
               <Card style={{ width: "18rem" }}>
                 <Card.Img
+                  className="home-card-image"
                   variant="top"
-                  src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?q=80&w=2139&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  src="../images/bread-sale.jpg"
                 />
                 <Card.Body>
                   <Card.Title className="text-danger text-center" as="h4">
@@ -231,7 +247,7 @@ function Home({ addToCart }) {
                     Whole Grain Bread
                   </Card.Text>
                   <div className="d-grid gap-2">
-                    <Button className="" variant="success" size="md">
+                    <Button className="" variant="dark" size="md">
                       Add to Cart
                     </Button>
                   </div>

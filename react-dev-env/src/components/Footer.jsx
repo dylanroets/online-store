@@ -7,7 +7,7 @@ function Footer() {
       <footer class="pt-5">
         <Row className="pb-4">
           <Col sm={6}>
-            <img class="footer-logo" src="../images/food.png" />
+            <img class="footer-logo" src="../images/logo-cutlery-orange.png" />
           </Col>
 
           <Col sm={6}>

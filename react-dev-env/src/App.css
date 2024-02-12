@@ -1,5 +1,6 @@
 /* --- NAVIGATION --- */
 li {
+  list-style-type: none;
   padding-left: 20px;
 }
 
@@ -22,15 +23,69 @@ li {
   height: 60vh;
 }
 
+.home-head-button {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.btn-warning {
+  background-color: #f19c10 !important;
+}
+
 .home-head-text {
+  text-align: center;
   padding-left: 560px;
 }
 
-/* --- SEARCH RESULTS --- */
+.home-card-image {
+  height: 200px;
+}
 
 /* --- CATEGORY RESULTS --- */
 
 /* --- CHECKOUT --- */
+.ck-cart-text {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.ck-cart-text-policy {
+  font-size: 12px;
+  font-weight: light;
+}
+
+.btn-outline-warning,
+.btn-outline-warning:hover {
+  background-color: #f19c10;
+  border-color: #f19c10;
+}
+
+.btn-outline-warning:active,
+.btn-outline-warning:focus {
+  color: #fff;
+  background-color: #f19c10 !important;
+  border-color: #f19c10 !important;
+  box-shadow: 0 0 0 0.2rem rgba(206, 150, 21, 0.5) !important;
+}
+
+.ck-cart-hr {
+  border-top: dotted 2px;
+}
+
+.ck-cart-image {
+  height: 100px;
+  width: 100px;
+}
+
+.ck-cart-icon-bin {
+  height: 25px;
+  width: 25px;
+}
+
+.ck-cart-border {
+  border-right: solid 1px #bebebe;
+}
 
 /* --- FOOTER --- */
 footer {
